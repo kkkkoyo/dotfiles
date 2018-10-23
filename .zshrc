@@ -16,6 +16,13 @@ fi
 zplug load
 
 
+# vcCodeの設定
+# system-wide environment settings for zsh(1)
+if [ -x /usr/libexec/path_helper ]; then
+    eval `/usr/libexec/path_helper -s`
+fi
+# vscodeの設定
+
 
 # ここはプロンプトの設定なので今回の設定とは関係ありません
 if [ $UID -eq 0 ];then
