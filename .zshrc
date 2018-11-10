@@ -1,4 +1,14 @@
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
 PATH=/bin:/usr/bin:/usr/local/bin:${PATH}
+
+eval "$(pyenv init -)"
+
+# 謎のやつ
+alias python=python3
 
 #zsh-syntax-highlighting
 
@@ -27,15 +37,16 @@ fi
 # ここはプロンプトの設定なので今回の設定とは関係ありません
 if [ $UID -eq 0 ];then
 # ルートユーザーの場合
-PROMPT="(^^)ﾆｺ🍣 %F{red}%n:%f%F{green}%d%f %% "
+PROMPT="(^-^)ﾆｺ🍣 %F{red}%n:%f%F{green}%d%f %% "
 else
 # ルートユーザー以外の場合
-PROMPT="(^^)ﾆｺ🍣 %F{cyan}%n:%f%F{green}%d%f %% "
+PROMPT="(^-^)ﾆｺ🍣 %F{cyan}%n:%f%F{green}%d%f %% "
 fi
 
 # 🍣
 opening_comment=(こんにちはー 今日も1日頑張るぞ やっほー)
 echo $opening_comment[2] |echo-sd -s
+
 # 🍣
 
 # セパレータを設定する
@@ -196,3 +207,6 @@ setopt prompt_subst
 
 # プロンプトの右側(RPROMPT)にメソッドの結果を表示させる
 RPROMPT='`rprompt-git-current-branch`'
+
+# 末尾設定
+eval "$(pyenv init -)"
