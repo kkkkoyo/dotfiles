@@ -1,6 +1,11 @@
 " vim-plug導入
 call plug#begin()
+" vim-plug
 Plug 'tpope/vim-sensible'
+" Vim Markdown
+Plug 'tpope/vim-markdown'
+Plug 'kannokanno/previm'
+Plug 'tyru/open-browser.vim'
 call plug#end()
 
 " 現在の行を強調表示
