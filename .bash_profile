@@ -28,3 +28,6 @@ else
 fi
 unset __conda_setup
 # <<< conda init <<<
+
+# added by Miniconda2 installer
+export PATH="/Users/k-arai/miniconda2/bin:$PATH"
