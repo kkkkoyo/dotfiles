@@ -1,3 +1,8 @@
+" vim-plug導入
+call plug#begin()
+Plug 'tpope/vim-sensible'
+call plug#end()
+
 " 現在の行を強調表示
 set cursorline
 " 現在の行を強調表示（縦）
@@ -132,3 +137,4 @@ if has("autocmd")
     \ endif
   augroup END
 endif
+
