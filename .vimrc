@@ -2,11 +2,21 @@
 call plug#begin()
 " vim-plug
 Plug 'tpope/vim-sensible'
-" Vim Markdown
+" Vim Markdown Ctrl-pでプレビュー
 Plug 'tpope/vim-markdown'
 Plug 'kannokanno/previm'
 Plug 'tyru/open-browser.vim'
 call plug#end()
+
+""" markdown {{{
+   autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
+   autocmd BufRead,BufNewFile *.md  set filetype=markdown
+   " Need: kannokanno/previm
+   nnoremap <silent> <C-p> :PrevimOpen<CR> " Ctrl-pでプレビュー
+   " 自動で折りたたまないようにする
+   let g:vim_markdown_folding_disabled=1
+   let g:previm_enable_realtime = 1
+ " }}}
 
 " 現在の行を強調表示
 set cursorline
