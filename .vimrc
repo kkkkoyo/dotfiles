@@ -5,6 +5,8 @@ Plug 'tpope/vim-sensible'
 " Vim Markdown Ctrl-pでプレビュー
 Plug 'tpope/vim-markdown'
 Plug 'kannokanno/previm'
+" Plug 'Shougo/vimshell.vim'
+" Plug 'Shougo/vimproc'
 Plug 'tyru/open-browser.vim'
 call plug#end()
 
