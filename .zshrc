@@ -37,10 +37,10 @@ fi
 # ここはプロンプトの設定なので今回の設定とは関係ありません
 if [ $UID -eq 0 ];then
 # ルートユーザーの場合
-PROMPT="(^-^)ﾆｺ🍣 %F{red}%n:%f%F{green}%d%f %% "
+PROMPT="(^-^)ﾆｺ🍁 %F{red}%n:%f%F{green}%d%f %% "
 else
 # ルートユーザー以外の場合
-PROMPT="(^-^)ﾆｺ🍣 %F{cyan}%n:%f%F{green}%d%f %% "
+PROMPT="(^-^)ﾆｺ🍁 %F{cyan}%n:%f%F{green}%d%f %% "
 fi
 
 # 🍣
@@ -56,6 +56,10 @@ zstyle ':completion:*:manuals' separate-sections true
 # 名前で色を付けるようにする
 autoload colors
 colors
+
+# vimをアップデートして言語のwarningが出たのでその対策
+export LC_ALL=en_US.UTF-8
+
 
 # LS_COLORSを設定しておく
 export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
