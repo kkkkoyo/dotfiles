@@ -28,4 +28,3 @@
   conE = config --local user.email
   # 現在のブランチ名を取得 (e.g. master)
   cb = name-rev --name-only HEAD
-  pss = ph origin cb
