@@ -18,6 +18,7 @@
   co = checkout
   cm = commit
   cmm = commit -m
+  br = branch
   df = diff
   ps = push
   # いい感じのグラフでログを表示
@@ -28,3 +29,5 @@
   conE = config --local user.email
   # 現在のブランチ名を取得 (e.g. master)
   cb = name-rev --name-only HEAD
+  rt = remote -v
+  resets = reset --soft HEAD^
