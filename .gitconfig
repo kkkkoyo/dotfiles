@@ -31,3 +31,5 @@
   cb = name-rev --name-only HEAD
   rt = remote -v
   resets = reset --soft HEAD^
+[color]
+	ui = auto
