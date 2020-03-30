@@ -44,6 +44,10 @@ else
 PROMPT="(^-^)ﾆｺ🍁 %F{cyan}%n:%f%F{green}%d%f %% "
 fi
 
+
+# flutter
+export PATH=~/Documents/flutter/bin:$PATH
+
 # 🍣
 opening_comment=(こんにちはー 今日も1日頑張るぞ やっほー)
 echo $opening_comment[2] |echo-sd -s
