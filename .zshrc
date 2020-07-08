@@ -26,7 +26,6 @@ fi
  
 zplug load
 
-
 # vcCodeの設定
 # system-wide environment settings for zsh(1)
 if [ -x /usr/libexec/path_helper ]; then
@@ -220,6 +219,17 @@ RPROMPT='`rprompt-git-current-branch`'
 # nodenvの設定
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
+
+
+# rbenvにパスを通す
+# https://qiita.com/Alex_mht_code/items/d2db2eba17830e36a5f1
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+export PATH="~/.rbenv/shims:/usr/local/bin:$PATH"
+eval "$(rbenv init -)"
+
 
 # 末尾設定
 eval "$(pyenv init -)"
