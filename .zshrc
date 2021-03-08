@@ -8,6 +8,9 @@ PATH=/bin:/usr/bin:/usr/local/bin:${PATH}
 
 eval "$(pyenv init -)"
 
+# コメント機能を有効にする
+setopt interactivecomments
+
 # 謎のやつ
 alias python=python3
 
@@ -173,8 +176,6 @@ zplug "voronkovich/mysql.plugin.zsh"
 # tools
 zplug "marzocchi/zsh-notify"
 zplug "oknowton/zsh-dwim"
-
-#
 
 # ブランチ名を色付きで表示させるメソッド
 function rprompt-git-current-branch {
