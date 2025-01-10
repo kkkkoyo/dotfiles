@@ -4,28 +4,31 @@
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
-PATH=/bin:/usr/bin:/usr/local/bin:${PATH}
+# M1 Mac homebrew
+export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/homebrew/bin
 
-eval "$(pyenv init -)"
+#eval "$(pyenv init -)"
 
-# コメント機能を有効にする
-setopt interactivecomments
+
+# Flutter
+export PATH="$PATH:/Users/koyoarai/Documents/dev/flutter/bin"
 
 # 謎のやつ
 alias python=python3
 
 #zsh-syntax-highlighting
 
-source ~/.zplug/init.zsh
- 
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
- 
 if ! zplug check --verbose; then
     printf "インストールしますか？[y/N]: "
     if read -q; then
         echo; zplug install
     fi
 fi
+
+source ~/.zplug/init.zsh
+ 
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
  
 zplug load
 
@@ -177,6 +180,8 @@ zplug "voronkovich/mysql.plugin.zsh"
 zplug "marzocchi/zsh-notify"
 zplug "oknowton/zsh-dwim"
 
+#
+
 # ブランチ名を色付きで表示させるメソッド
 function rprompt-git-current-branch {
   local branch_name st branch_status
@@ -234,3 +239,64 @@ eval "$(rbenv init -)"
 
 # 末尾設定
 eval "$(pyenv init -)"
+
+# ポートを閉じる
+function kpp {
+  kill -9 $(lsof -t -i :$1)
+}
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/koyoarai/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/koyoarai/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/koyoarai/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/koyoarai/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+export PATH="/opt/homebrew/sbin:$PATH"
+
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"

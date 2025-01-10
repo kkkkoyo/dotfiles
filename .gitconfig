@@ -33,3 +33,12 @@
   resets = reset --soft HEAD^
 [color]
 	ui = auto
+[core]
+	excludesfile = /Users/koyoarai/.gitignore_global
+[user]
+	name = kkkkoyo
+	email = koyoarai512@gmail.com
+[commit]
+	template = /Users/koyoarai/.stCommitMsg
+[credential]
+	helper = store
