@@ -4,7 +4,7 @@ if [ -x /usr/libexec/path_helper ]; then
 fi
 
 # Base PATH
-export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/homebrew/bin:/opt/homebrew/sbin
+export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:"/Library/TeX/texbin:$PATH"
 
 # Anaconda
 if [ -d "/Users/koyoarai/opt/anaconda3" ]; then
@@ -111,6 +111,20 @@ function kpp {
     kill -9 $(lsof -t -i :$1)
 }
 
+function pdfmin()
+{
+    local cnt=0
+    for i in $@; do
+        gs -sDEVICE=pdfwrite \
+           -dCompatibilityLevel=1.4 \
+           -dPDFSETTINGS=/ebook \
+           -dNOPAUSE -dQUIET -dBATCH \
+           -sOutputFile=${i%%.*}.min.pdf ${i} &
+        (( (cnt += 1) % 4 == 0 )) && wait
+    done
+    wait && return 0
+}
+
 # General settings
 export LC_ALL=en_US.UTF-8
 setopt print_eight_bit
@@ -163,3 +177,8 @@ export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46
 echo "\033[0;33m=== Useful Commands ===\033[0m"
 echo "\033[0;36mkpp [port]\033[0m - Kill process running on specified port"
 echo "Example: kpp 3000"
+echo "==="
+echo "pdfmin *.pdf - Minimize PDF files"
+echo "==="
+echo "cd /Users/koyoarai/Documents/dev/python/selenium_chrome"
+echo "/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome -remote-debugging-port=9222 --user-data-dir=~./
