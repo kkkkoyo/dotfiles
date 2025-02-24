@@ -181,4 +181,4 @@ echo "==="
 echo "pdfmin *.pdf - Minimize PDF files"
 echo "==="
 echo "cd /Users/koyoarai/Documents/dev/python/selenium_chrome"
-echo "/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome -remote-debugging-port=9222 --user-data-dir=~./
+echo "/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome -remote-debugging-port=9222 --user-data-dir=~./"
