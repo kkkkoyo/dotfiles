@@ -125,6 +125,76 @@ function pdfmin()
     wait && return 0
 }
 
+function videomin()
+{
+    local width=1280
+    local crf=28
+    local preset=medium
+    local audio_bitrate=128k
+    local OPTIND=1
+    local opt
+
+    while getopts ":w:c:p:a:h" opt; do
+        case "$opt" in
+            w) width="$OPTARG" ;;
+            c) crf="$OPTARG" ;;
+            p) preset="$OPTARG" ;;
+            a) audio_bitrate="$OPTARG" ;;
+            h)
+                echo "usage: videomin [-w width] [-c crf] [-p preset] [-a audio_bitrate] input..."
+                echo "output: <input>_h264_<width>.mp4"
+                return 0
+                ;;
+            *)
+                echo "usage: videomin [-w width] [-c crf] [-p preset] [-a audio_bitrate] input..." >&2
+                return 1
+                ;;
+        esac
+    done
+    shift $((OPTIND - 1))
+
+    if ! command -v ffmpeg >/dev/null 2>&1; then
+        echo "videomin: ffmpeg not found" >&2
+        return 1
+    fi
+
+    if [ $# -eq 0 ]; then
+        echo "usage: videomin [-w width] [-c crf] [-p preset] [-a audio_bitrate] input..." >&2
+        return 1
+    fi
+
+    local input output
+    for input in "$@"; do
+        if [ ! -f "$input" ]; then
+            echo "videomin: file not found: $input" >&2
+            return 1
+        fi
+
+        output="${input%.*}_h264_${width}.mp4"
+        if [ "$output" = "$input" ]; then
+            output="${input}_h264_${width}.mp4"
+        fi
+
+        if [ -e "$output" ]; then
+            echo "videomin: output already exists: $output" >&2
+            return 1
+        fi
+
+        echo "videomin: $input -> $output"
+        ffmpeg -i "$input" \
+            -map "0:v:0" -map "0:a?" \
+            -vf "scale='min(${width},iw)':-2" \
+            -c:v libx264 \
+            -preset "$preset" \
+            -crf "$crf" \
+            -pix_fmt yuv420p \
+            -c:a aac \
+            -b:a "$audio_bitrate" \
+            -movflags +faststart \
+            "$output" || return 1
+    done
+}
+
 # General settings
 export LC_ALL=en_US.UTF-8
 setopt print_eight_bit
@@ -179,6 +249,7 @@ echo "\033[0;36mkpp [port]\033[0m - Kill process running on specified port"
 echo "Example: kpp 3000"
 echo "==="
 echo "pdfmin *.pdf - Minimize PDF files"
+echo "videomin movie.mp4 - Compress movie to H.264 MP4 (default width: 1280)"
 echo "==="
 echo "cd /Users/koyoarai/Documents/dev/python/selenium_chrome"
 echo "/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome -remote-debugging-port=9222 --user-data-dir=~./"
